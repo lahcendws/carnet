@@ -31,11 +31,13 @@ public class EtapeController {
 
         return "etapes/addEtape";
     }
-    @RequestMapping("etape/save")
-    public String saveEtape(@ModelAttribute() Etape etape, Principal principal){
+    @RequestMapping("etape/save/{id}")
+    public String saveEtape(@PathVariable("id") Long id,@ModelAttribute() Etape etape, Principal principal){
         String username = principal.getName();
         User user = userRepository.findByUsername(username);
+        Destination destination = destinationRepository.getById(id);
         etape.setUser(user);
+        etape.setDestination(destination);
         etapeRepository.save(etape);
         return  "redirect:/";
     }
