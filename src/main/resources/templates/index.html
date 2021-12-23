@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout.html :: site-head">
+    <title>Binevenue sur Mon Carnet d'adresse</title>
+</head>
+
+<body>
+
+<header th:replace="layout.html :: site-header"/>
+<div class="container">
+    <h1>Bienvenue mon Carnet DE destination</h1>
+    <p th:text="${'Aujourdhuit: '+#dates.format(#dates.createNow(),'dd/MM/YYYY HH:mm')}">date:</p>
+
+    <main id="posts">
+        <article th:each="d : ${destinations}">
+            <h2 class="title" th:text="${d.pays}">Pays</h2>
+             <a class="" href="" th:href="@{/destinations/view/{id}(id=${d.id})}">voir la destination</a>
+            <a class="" href="" th:href="@{/etapeCreate}">ajouter une etape</a>
+            <!--<div class="date">
+                <i>date de debut</i>
+                <span th:text="${#dates.format(d.dateDebut, 'dd-MMM-yyyy')}">date de debut</span>
+                </span>
+            </div>
+            <div class="date">
+                <i>date de fin</i>
+                <span th:text="${#dates.format(d.dateFin, 'dd-MMM-yyyy')}">detae de fin</span>
+                </span>
+            </div>-->
+        </article>
+    </main>
+
+</div>
+
+<footer th:replace="layout.html :: site-footer"/>
+
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout.html :: site-head">
+    <title>Welcome login form</title>
+</head>
+
+<body>
+
+<header th:replace="layout.html :: site-header"/>
+<div class="container">
+    <h1>Inscription</h1>
+    <p th:text="${'Today: '+#dates.format(#dates.createNow(),'dd/MM/YYYY HH:mm')}">date:</p>
+
+    <div>
+        <h1>User Registration - Sign Up</h1>
+    </div>
+    <form th:action="@{/process_register}" th:object="${user}"
+          method="post" style="max-width: 600px; margin: 0 auto;">
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Username: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{username}" class="form-control" required />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Mot de passe: </label>
+                <div class="col-8">
+                    <input type="password" th:field="*{password}" class="form-control"
+                           required minlength="6" maxlength="10"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Nom: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{firstName}" class="form-control"
+                           required minlength="2" maxlength="20"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Prenom: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{lastName}" class="form-control"
+                           required minlength="2" maxlength="20" />
+                </div>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<footer th:replace="layout.html :: site-footer"/>
+
+</body>
+
+</html>

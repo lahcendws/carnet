@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout.html :: site-head">
+    <title>Welcome to Spring MVC Blog</title>
+</head>
+
+<body>
+
+<header th:replace="layout.html :: site-header"/>
+<div class="container">
+    <h1>Welcome to Blog lahcen</h1>
+    <p th:text="${'Today: '+#dates.format(#dates.createNow(),'dd/MM/YYYY HH:mm')}">date:</p>
+
+    <main id="posts">
+        <div class="container text-center">
+            <h3>You have signed up successfully!</h3>
+            <h4><a th:href="@{/login}">Click here to Login</a></h4>
+        </div>
+    </main>
+
+</div>
+
+<footer th:replace="layout.html :: site-footer"/>
+
+</body>
+
+</html>

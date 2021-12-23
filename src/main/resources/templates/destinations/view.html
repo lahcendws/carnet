@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title th:text="${destination.pays}">Voir la destination</title>
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" />
+<div class="container">
+    <main id="posts">
+        <article>
+            <h2 class="title" th:text="${destination.pays}">Post Title</h2>
+            <div class="date">
+                <i>Posted on</i>
+                <span th:text="${#dates.format(destination.getDateDebut(), 'dd-MMM-yyyy')}"></span>
+            </div>
+            <div class="date">
+                <i>Posted on</i>
+                <span th:text="${#dates.format(destination.getDateFin(), 'dd-MMM-yyyy')}"></span>
+                <span th:if="${destination.getUser().getUsername()}" th:remove="tag">
+            <i>Par</i>
+            <span th:text="${destination.getUser()!= null ?
+                             destination.getUser() : destination.getUser().getUsername()}"></span>
+            </span>-->
+            </div>
+        </article>
+    </main>
+</div>
+<footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>

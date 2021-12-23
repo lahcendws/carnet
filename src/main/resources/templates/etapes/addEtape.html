@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout.html :: site-head">
+    <title>ajouter une destination</title>
+</head>
+
+<body>
+
+<header th:replace="layout.html :: site-header"/>
+<div class="container">
+    <h1>Ajouter une destination</h1>
+    <p th:text="${'Date: '+#dates.format(#dates.createNow(),'dd/MM/YYYY HH:mm')}">date:</p>
+
+    <main id="posts">
+        <form action="#" th:action="@{etape/save}" th:object="${etape}" method="POST" >
+            <div class="form-group">
+                <label for="pays">Ville: </label>
+                <input type="text" id="posttextearea" th:field="*{ville}" placeholder="pays" class="form-control mb-4 col-4">
+            </div>
+            <div class="form-group">
+                <label for="date de debut">Date: </label>
+                <input type="date" id="textearea2" th:field="*{dateDebut}" placeholder="date de debut" class="form-control mb-4 col-4">
+            </div>
+            <div class="form-group">
+                <label for="date de debut">Date de Fin: </label>
+                <input type="date" id="textearea2" th:field="*{dateFin}" placeholder="date de debut" class="form-control mb-4 col-4">
+            </div>
+
+            <button type="submit" class="btn btn-info col-2"> Valider</button>
+        </form>
+    </main>
+
+</div>
+
+<footer th:replace="layout.html :: site-footer"/>
+
+</body>
+
+</html>
